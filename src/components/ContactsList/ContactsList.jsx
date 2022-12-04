@@ -1,9 +1,9 @@
-export const ContactsList = contacts => {
+export const ContactsList = ({ data }) => {
   return (
     <ul>
-      {/* {contacts.map(contact => (
-        <li>1</li>
-      ))} */}
+      {data.map(item => (
+        <li key={item.id}>{item.name}</li>
+      ))}
     </ul>
   );
 };
