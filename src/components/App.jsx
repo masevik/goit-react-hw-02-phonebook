@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { ContactsList } from './ContactsList/ContactsList';
+import { PhonebookForm } from './PhonebookForm/PhonebookForm';
 import { Section } from './Section/Section';
 
 export class App extends Component {
@@ -7,18 +9,27 @@ export class App extends Component {
     name: '',
   };
 
+  addContact = event => {
+    event.preventDefault();
+  };
+
+  onChange = event => {
+    this.setState({ name: event.target.value });
+  };
+
   render() {
     return (
       <>
-        <Section title="Phonebook" />
-
-        <input
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
+        <Section title="Phonebook">
+          <PhonebookForm
+            onSubmit={this.addContact}
+            onChange={this.onChange}
+            value={this.state.name}
+          />
+        </Section>
+        <Section title="Contacts">
+          <ContactsList contacts={this.state.contacts} />
+        </Section>
       </>
     );
   }
