@@ -4,11 +4,14 @@ import { RiUser3Line, RiPhoneLine } from 'react-icons/ri';
 export const ContactItem = styled.li`
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  justify-content: space-between;
+  gap: 30px;
   margin-bottom: 5px;
 
   span {
-    margin-right: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 `;
 

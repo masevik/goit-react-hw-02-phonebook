@@ -10,10 +10,10 @@ export const Section = ({ title, children }) => {
   );
 };
 
-Section.propTypes = {
-  title: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.element.isRequired,
-    PropTypes.bool.isRequired,
-  ]),
-};
+// Section.propTypes = {
+//   title: PropTypes.string.isRequired,
+//   children: PropTypes.oneOfType([
+//     PropTypes.element.isRequired,
+//     PropTypes.bool.isRequired,
+//   ]),
+// };
