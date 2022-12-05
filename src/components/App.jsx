@@ -11,7 +11,6 @@ export class App extends Component {
   };
 
   addContact = ({ name }) => {
-    console.log(name);
     const currentContacts = {
       name,
       id: nanoid(),
@@ -28,7 +27,9 @@ export class App extends Component {
           <PhonebookForm onSubmit={this.addContact} />
         </Section>
         <Section title="Contacts">
-          <ContactsList data={this.state.contacts} />
+          {this.state.contacts.length !== 0 && (
+            <ContactsList data={this.state.contacts} />
+          )}
         </Section>
       </Box>
     );

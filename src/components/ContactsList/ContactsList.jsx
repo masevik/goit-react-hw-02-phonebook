@@ -1,4 +1,5 @@
 export const ContactsList = ({ data }) => {
+  console.log(data);
   return (
     <ul>
       {data.map(item => (
