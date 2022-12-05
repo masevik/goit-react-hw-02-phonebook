@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Box } from 'components/Box';
 import { nanoid } from 'nanoid';
 import { Component } from 'react';
@@ -22,3 +22,8 @@ export class Filter extends Component {
     );
   }
 }
+
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
