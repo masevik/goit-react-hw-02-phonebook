@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const ContactsList = ({ data }) => {
   console.log(data);
   return (
@@ -7,4 +9,8 @@ export const ContactsList = ({ data }) => {
       ))}
     </ul>
   );
+};
+
+ContactsList.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

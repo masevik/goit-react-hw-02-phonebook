@@ -1,8 +1,11 @@
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import { Component } from 'react';
 import { Button } from './PhonebookForm.styled';
 
 export class PhonebookForm extends Component {
+  static propTypes = { onSubmit: PropTypes.func.isRequired };
+
   state = {
     name: '',
   };
