@@ -1,9 +1,9 @@
 import { nanoid } from 'nanoid';
 import { Component } from 'react';
 import { Box } from './Box';
-import { ContactsList } from './ContactsList/ContactsList';
-import { PhonebookForm } from './PhonebookForm/PhonebookForm';
-import { Section } from './Section/Section';
+import { ContactsList } from './ContactsList';
+import { PhonebookForm } from './PhonebookForm';
+import { Section } from './Section';
 
 export class App extends Component {
   state = {
