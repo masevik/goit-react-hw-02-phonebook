@@ -8,9 +8,11 @@ export class PhonebookForm extends Component {
 
   state = {
     name: '',
+    number: '',
   };
 
   nameInputId = nanoid();
+  telInputId = nanoid();
 
   onChange = event => {
     const { name, value } = event.currentTarget;
@@ -24,7 +26,7 @@ export class PhonebookForm extends Component {
   };
 
   reset = () => {
-    this.setState({ name: '' });
+    this.setState({ name: '', number: '' });
   };
 
   render() {
@@ -39,6 +41,17 @@ export class PhonebookForm extends Component {
           onChange={this.onChange}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+        />
+        <Label htmlFor={this.telInputId}>Number</Label>
+        <Input
+          type="tel"
+          name="number"
+          id={this.telInputId}
+          value={this.state.number}
+          onChange={this.onChange}
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
         <Button type="submit">Add contact</Button>
