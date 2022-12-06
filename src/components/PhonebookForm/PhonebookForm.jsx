@@ -30,26 +30,29 @@ export class PhonebookForm extends Component {
   };
 
   render() {
+    const { onHandleSubmit, nameInputId, telInputId, onChange } = this;
+    const { name, number } = this.state;
+
     return (
-      <Form onSubmit={this.onHandleSubmit}>
-        <Label htmlFor={this.nameInputId}>Name</Label>
+      <Form onSubmit={onHandleSubmit}>
+        <Label htmlFor={nameInputId}>Name</Label>
         <Input
           type="text"
           name="name"
-          id={this.nameInputId}
-          value={this.state.name}
-          onChange={this.onChange}
+          id={nameInputId}
+          value={name}
+          onChange={onChange}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        <Label htmlFor={this.telInputId}>Number</Label>
+        <Label htmlFor={telInputId}>Number</Label>
         <Input
           type="tel"
           name="number"
-          id={this.telInputId}
-          value={this.state.number}
-          onChange={this.onChange}
+          id={telInputId}
+          value={number}
+          onChange={onChange}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

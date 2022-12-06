@@ -32,23 +32,33 @@ export class App extends Component {
 
     nameList.includes(currentContacts.name)
       ? alert(currentContacts.name + ' is already in contacts')
-      : this.setState(prevState => {
-          return { contacts: [...prevState.contacts, currentContacts] };
-        });
+      : this.setState(({ contacts }) => ({
+          contacts: [...contacts, currentContacts],
+        }));
+  };
+
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
   };
 
   render() {
+    const { addContact, onChange, deleteContact } = this;
+    const { filter, contacts } = this.state;
+
     return (
       <Box ml="50px" mt="20px">
         <Section title="Phonebook">
-          <PhonebookForm onSubmit={this.addContact} />
+          <PhonebookForm onSubmit={addContact} />
         </Section>
         <Section title="Contacts">
-          <Filter value={this.state.filter} onChange={this.onChange} />
-          {this.state.contacts.length !== 0 && (
+          <Filter value={filter} onChange={onChange} />
+          {contacts.length !== 0 && (
             <ContactsList
-              data={this.state.contacts}
-              filter={this.state.filter}
+              data={contacts}
+              filter={filter}
+              onDeleteContact={deleteContact}
             />
           )}
         </Section>

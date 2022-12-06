@@ -1,24 +1,36 @@
 import PropTypes from 'prop-types';
 import { Box } from 'components/Box';
-import { ContactItem, UserIcon, PhoneIcon } from './ContactsList.styled';
+import {
+  ContactItem,
+  UserIcon,
+  PhoneIcon,
+  Button,
+} from './ContactsList.styled';
 
-export const ContactsList = ({ data, filter }) => {
+export const ContactsList = ({ data, filter, onDeleteContact }) => {
   const filteredContacts = data.filter(item =>
     item.name.toLowerCase().includes(filter.toLowerCase())
   );
   const actualList = filter === '' ? data : filteredContacts;
 
   return (
-    <Box width="350px" pl="20px" pr="20px" as="ul">
-      {actualList.map(item => (
-        <ContactItem key={item.id}>
+    <Box width="500px" pl="20px" pr="20px" as="ul">
+      {actualList.map(({ id, name, number }) => (
+        <ContactItem key={id}>
           <span>
-            <UserIcon /> {item.name}
+            <UserIcon /> {name}
           </span>
           <span>
             <PhoneIcon />
-            {item.number}
+            {number}
           </span>
+          <Button
+            onClick={() => {
+              onDeleteContact(id);
+            }}
+          >
+            Delete
+          </Button>
         </ContactItem>
       ))}
     </Box>

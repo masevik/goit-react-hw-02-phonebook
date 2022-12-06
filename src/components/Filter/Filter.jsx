@@ -8,6 +8,8 @@ export class Filter extends Component {
   filterInputId = nanoid();
 
   render() {
+    const { value, onChange } = this.props;
+
     return (
       <Box display="flex" flexDirection="column">
         <Label htmlFor="this.filterInputId">Find contact by name</Label>
@@ -15,8 +17,8 @@ export class Filter extends Component {
           type="text"
           name="filter"
           id="this.filterInputId"
-          value={this.props.value}
-          onChange={this.props.onChange}
+          value={value}
+          onChange={onChange}
         />
       </Box>
     );

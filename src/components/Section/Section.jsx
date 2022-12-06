@@ -14,11 +14,3 @@ Section.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node,
 };
-
-// Section.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   children: PropTypes.oneOfType([
-//     PropTypes.element.isRequired,
-//     PropTypes.bool.isRequired,
-//   ]),
-// };
