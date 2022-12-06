@@ -23,14 +23,18 @@ export class App extends Component {
   };
 
   addContact = ({ name, number }) => {
+    const nameList = this.state.contacts.map(item => item.name);
     const currentContacts = {
       name,
       number,
       id: nanoid(),
     };
-    this.setState(prevState => {
-      return { contacts: [...prevState.contacts, currentContacts] };
-    });
+
+    nameList.includes(currentContacts.name)
+      ? alert(currentContacts.name + ' is already in contacts')
+      : this.setState(prevState => {
+          return { contacts: [...prevState.contacts, currentContacts] };
+        });
   };
 
   render() {

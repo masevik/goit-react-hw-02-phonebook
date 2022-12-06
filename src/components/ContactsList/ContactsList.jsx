@@ -1,5 +1,5 @@
-import { Box } from 'components/Box';
 import PropTypes from 'prop-types';
+import { Box } from 'components/Box';
 import { ContactItem, UserIcon, PhoneIcon } from './ContactsList.styled';
 
 export const ContactsList = ({ data, filter }) => {
