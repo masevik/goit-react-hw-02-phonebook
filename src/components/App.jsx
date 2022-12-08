@@ -20,18 +20,25 @@ export class App extends Component {
   onFilterChange = filter => this.setState({ filter: filter.toLowerCase() });
 
   addContact = ({ name, number }) => {
-    const nameList = this.state.contacts.map(item => item.name);
-    const currentContacts = {
+    const isInContacts = this.state.contacts.some(
+      contact => contact.name.toLocaleLowerCase() === name.toLocaleLowerCase()
+    );
+
+    if (isInContacts) {
+      alert(name + ' is already in contacts');
+      return false;
+    }
+    const currentContact = {
       name,
       number,
       id: nanoid(),
     };
 
-    nameList.includes(currentContacts.name)
-      ? alert(currentContacts.name + ' is already in contacts')
-      : this.setState(({ contacts }) => ({
-          contacts: [...contacts, currentContacts],
-        }));
+    this.setState(({ contacts }) => ({
+      contacts: [currentContact, ...contacts],
+    }));
+
+    return true;
   };
 
   deleteContact = contactId => {
@@ -50,13 +57,15 @@ export class App extends Component {
           <PhonebookForm onSubmit={addContact} />
         </Section>
         <Section title="Contacts">
-          <Filter value={filter} onChange={onFilterChange} />
           {contacts.length !== 0 && (
-            <ContactsList
-              data={contacts}
-              filter={filter}
-              onDeleteContact={deleteContact}
-            />
+            <>
+              <Filter value={filter} onChange={onFilterChange} />
+              <ContactsList
+                data={contacts}
+                filter={filter}
+                onDeleteContact={deleteContact}
+              />
+            </>
           )}
         </Section>
       </Box>

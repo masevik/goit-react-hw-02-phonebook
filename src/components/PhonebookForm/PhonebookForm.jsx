@@ -21,8 +21,8 @@ export class PhonebookForm extends Component {
 
   onHandleSubmit = event => {
     event.preventDefault();
-    this.props.onSubmit(this.state);
-    this.reset();
+    const success = this.props.onSubmit({ ...this.state });
+    if (success) this.reset();
   };
 
   reset = () => {
