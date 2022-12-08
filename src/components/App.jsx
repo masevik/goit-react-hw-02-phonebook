@@ -17,10 +17,7 @@ export class App extends Component {
     filter: '',
   };
 
-  onChange = event => {
-    const { name, value } = event.currentTarget;
-    this.setState({ [name]: value });
-  };
+  onFilterChange = filter => this.setState({ filter: filter.toLowerCase() });
 
   addContact = ({ name, number }) => {
     const nameList = this.state.contacts.map(item => item.name);
@@ -44,7 +41,7 @@ export class App extends Component {
   };
 
   render() {
-    const { addContact, onChange, deleteContact } = this;
+    const { addContact, onFilterChange, deleteContact } = this;
     const { filter, contacts } = this.state;
 
     return (
@@ -53,7 +50,7 @@ export class App extends Component {
           <PhonebookForm onSubmit={addContact} />
         </Section>
         <Section title="Contacts">
-          <Filter value={filter} onChange={onChange} />
+          <Filter value={filter} onChange={onFilterChange} />
           {contacts.length !== 0 && (
             <ContactsList
               data={contacts}

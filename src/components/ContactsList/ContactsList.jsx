@@ -9,7 +9,7 @@ import {
 
 export const ContactsList = ({ data, filter, onDeleteContact }) => {
   const filteredContacts = data.filter(item =>
-    item.name.toLowerCase().includes(filter.toLowerCase())
+    item.name.toLowerCase().includes(filter)
   );
   const actualList = filter === '' ? data : filteredContacts;
 

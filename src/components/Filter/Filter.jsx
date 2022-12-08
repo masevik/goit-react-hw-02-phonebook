@@ -7,8 +7,13 @@ import { Input, Label } from './Filter.styled';
 export class Filter extends Component {
   filterInputId = nanoid();
 
+  onChange = event => {
+    const filter = event.currentTarget.value;
+    this.props.onChange(filter);
+  };
+
   render() {
-    const { value, onChange } = this.props;
+    const { value } = this.props;
 
     return (
       <Box display="flex" flexDirection="column">
@@ -18,7 +23,7 @@ export class Filter extends Component {
           name="filter"
           id="this.filterInputId"
           value={value}
-          onChange={onChange}
+          onChange={this.onChange}
         />
       </Box>
     );
